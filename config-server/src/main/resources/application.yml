@@ -1,0 +1,12 @@
+server:
+  port: 8191
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/jalithadewapura/spring-cloud-config-store
+          default-label: main
+          search-paths:
+            - '*service'
