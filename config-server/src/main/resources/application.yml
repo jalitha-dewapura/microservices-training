@@ -6,7 +6,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/jalithadewapura/spring-cloud-config-store
+          uri: https://github.com/jalithadewapura/config-store
           default-label: main
           search-paths:
-            - '*service'
+            - 'service-config/*service'
