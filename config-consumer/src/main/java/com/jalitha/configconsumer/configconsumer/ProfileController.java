@@ -13,11 +13,10 @@ public class ProfileController {
     MemberProfileConfiguration memberProfileConfiguration;
 
     @RequestMapping("/profile")
-    public String getConfig(Model model) {
-        model.addAttribute("model", memberProfileConfiguration.getDefaultModel()) ;
-        model.addAttribute("min", memberProfileConfiguration.getMinRentPeriod());
+    public MemberProfileConfiguration getConfig(Model model) {
+        return memberProfileConfiguration;
 
-        return "mprofile";
+//        return "mprofile";
     }
 }
 
