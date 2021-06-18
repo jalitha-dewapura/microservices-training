@@ -4,6 +4,7 @@ import com.jalitha.rentcloud.commons.model.Customer;
 import com.jalitha.rentcloud.profileservice.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.w3c.dom.stylesheets.LinkStyle;
 
@@ -16,13 +17,14 @@ public class ProfileController {
     @Autowired
     CustomerService customerService;
 
-    @RequestMapping(value = "/profile", method = RequestMethod.POST)
+    @RequestMapping(value = "/customers", method = RequestMethod.POST)
+    @PreAuthorize("hasRole('ROLE_admin')")                              //using role based authenticate
     public Customer save(@RequestBody Customer customer) {
         return customerService.save(customer);
     }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.GET)
-    public ResponseEntity<Customer> fetchCustomer(@RequestParam int id) {
+    @RequestMapping(value = "/customers/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Customer> fetchCustomer(@PathVariable(value = "id") int id) {
         Customer customer = customerService.fetchCustomer(id);
         if( customer == null )
             return ResponseEntity.notFound().build();
@@ -30,7 +32,8 @@ public class ProfileController {
         return ResponseEntity.ok().body(customer);
     }
 
-    @RequestMapping(value="/profiles", method = RequestMethod.GET)
+    @RequestMapping(value="/customers", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ROLE_admin')")                       //using permission based authenticate
     public List fetchAllCustomers() {
         return customerService.fetchAllCustomers();
     }
