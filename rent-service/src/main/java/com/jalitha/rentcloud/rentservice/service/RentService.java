@@ -5,6 +5,7 @@ import com.jalitha.rentcloud.rentservice.model.DetailResponse;
 import com.jalitha.rentcloud.rentservice.model.Response;
 
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 public interface RentService {
     Rent save(Rent customer);
@@ -13,5 +14,5 @@ public interface RentService {
 
     List<Rent> findAll();
 
-    DetailResponse findDetailResponse(int id);
+    DetailResponse findDetailResponse(int id) throws ExecutionException, InterruptedException;
 }
