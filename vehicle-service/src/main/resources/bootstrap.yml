@@ -1,6 +1,9 @@
 spring:
   application:
-    name: customer
+    name: vehicle
+
+server:
+  port: 0
 
 eureka:
   client:
@@ -9,6 +12,3 @@ eureka:
   instance:
     instance-id: ${spring.application.name}-${random.int}
     hostname: localhost
-
-server:
-  port: 0

@@ -10,14 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- * @author Krishantha Dinesh
- * krishantha@krishantha.com
- * www.krishantha.com
- * twitter @krishantha
- * on 15-October-2019 06:36
- * @Project rentcloudmodel
- */
 @RestController
 @RequestMapping("/services/rents")
 public class RentController {
